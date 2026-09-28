@@ -1,7 +1,7 @@
 ﻿"use client"
 
 import { useTransition, useState } from "react"
-import { updateExperienceStatus } from "./actions"
+import { updateExperienceStatus } from "@/app/dashboard/actions"
 import { Button } from "@/components/ui/button"
 import { Check, X, Loader2 } from "lucide-react"
 
