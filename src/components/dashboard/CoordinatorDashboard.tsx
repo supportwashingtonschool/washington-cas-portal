@@ -17,7 +17,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import Link from "next/link"
+import { buttonVariants } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { cn } from "@/lib/utils"
 import {
   ShieldCheck,
   Users,
@@ -30,6 +33,7 @@ import {
   GraduationCap,
   Sparkles,
   Inbox,
+  BookOpen,
 } from "lucide-react"
 import StatusActionButtons from "./StatusActionButtons"
 
@@ -406,16 +410,17 @@ export default function CoordinatorDashboard({
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="w-[300px]">Full Name</TableHead>
+                  <TableHead className="w-[280px]">Full Name</TableHead>
                   <TableHead>Student ID</TableHead>
                   <TableHead>Role</TableHead>
-                  <TableHead className="text-right">Joined Date</TableHead>
+                  <TableHead>Joined Date</TableHead>
+                  <TableHead className="text-right">Action</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {allStudents.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={4} className="text-center py-8 text-muted-foreground text-sm">
+                    <TableCell colSpan={5} className="text-center py-8 text-muted-foreground text-sm">
                       <div className="flex flex-col items-center justify-center gap-2">
                         <Inbox className="h-6 w-6 text-muted-foreground/60" />
                         <span>No students registered yet.</span>
@@ -444,7 +449,7 @@ export default function CoordinatorDashboard({
                           IB Student
                         </span>
                       </TableCell>
-                      <TableCell className="text-right text-xs text-muted-foreground">
+                      <TableCell className="text-xs text-muted-foreground">
                         {student.created_at
                           ? new Date(student.created_at).toLocaleDateString("en-US", {
                               month: "short",
@@ -452,6 +457,18 @@ export default function CoordinatorDashboard({
                               year: "numeric",
                             })
                           : "N/A"}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <Link
+                          href={`/dashboard/student/${student.id}`}
+                          className={cn(
+                            buttonVariants({ variant: "outline", size: "sm" }),
+                            "gap-1.5 text-xs font-medium hover:border-primary/50 hover:bg-primary/5 transition-colors"
+                          )}
+                        >
+                          <BookOpen className="h-3.5 w-3.5 text-primary" />
+                          <span>View Portfolio</span>
+                        </Link>
                       </TableCell>
                     </TableRow>
                   ))
