@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useState } from "react"
 import {
@@ -24,7 +24,7 @@ export default function LoginForm({ error, message }: LoginFormProps) {
   const [mode, setMode] = useState<"login" | "signup">("login")
 
   return (
-    <Card className="w-full max-w-md shadow-xl border-border bg-card">
+    <Card className="w-full max-w-md shadow-2xl border-border/70 bg-card/80 backdrop-blur-xl dark:bg-card/60 dark:border-white/10">
       <CardHeader className="space-y-2 text-center pb-4">
         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary mb-2">
           <GraduationCap className="h-6 w-6" />
@@ -38,7 +38,7 @@ export default function LoginForm({ error, message }: LoginFormProps) {
             : "Create your student or coordinator portfolio account"}
         </CardDescription>
 
-        <div className="flex rounded-lg bg-muted p-1 mt-3">
+        <div className="flex rounded-lg bg-muted/70 backdrop-blur-xs p-1 mt-3 border border-border/40">
           <button
             type="button"
             onClick={() => setMode("login")}

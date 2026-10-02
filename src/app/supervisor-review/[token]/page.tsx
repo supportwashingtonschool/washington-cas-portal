@@ -1,4 +1,5 @@
-﻿import { createClient } from "@/utils/supabase/server"
+import { createClient } from "@/utils/supabase/server"
+import { ThemeToggle } from "@/components/ThemeToggle"
 import { Badge } from "@/components/ui/badge"
 import {
   Card,
@@ -13,7 +14,6 @@ import {
   CheckCircle2,
   AlertTriangle,
   User,
-  Calendar,
   Sparkles,
   ShieldCheck,
 } from "lucide-react"
@@ -92,7 +92,11 @@ export default async function SupervisorReviewPage({ params }: PageProps) {
   const experience = rawExperience as unknown as ExperienceWithProfile | null
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-muted/50 via-background to-muted/30 py-12 px-4 sm:px-6">
+    <div className="relative min-h-screen py-12 px-4 sm:px-6">
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
+
       {/* Top Header */}
       <header className="max-w-2xl mx-auto mb-8 text-center space-y-2">
         <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-md mb-2">
@@ -109,7 +113,7 @@ export default async function SupervisorReviewPage({ params }: PageProps) {
       <main className="max-w-2xl mx-auto">
         {!experience || error ? (
           /* Error / Invalid Link Card */
-          <Card className="border-destructive/30 shadow-lg text-center p-8 bg-card">
+          <Card className="border-destructive/30 shadow-lg text-center p-8 bg-card/80 backdrop-blur-md dark:bg-card/60">
             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-destructive/10 text-destructive mb-4">
               <AlertTriangle className="h-7 w-7" />
             </div>
@@ -122,9 +126,9 @@ export default async function SupervisorReviewPage({ params }: PageProps) {
           </Card>
         ) : (
           /* Valid Experience Verification Card */
-          <Card className="shadow-xl border-border bg-card overflow-hidden">
+          <Card className="shadow-2xl border-border/70 bg-card/80 backdrop-blur-xl dark:bg-card/60 dark:border-white/10 overflow-hidden">
             {/* Header Banner */}
-            <CardHeader className="bg-primary/5 border-b pb-5">
+            <CardHeader className="bg-primary/5 border-b border-border/40 pb-5">
               <div className="flex items-center justify-between gap-2">
                 <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary uppercase tracking-wider">
                   <ShieldCheck className="h-4 w-4" />
@@ -153,7 +157,7 @@ export default async function SupervisorReviewPage({ params }: PageProps) {
 
             <CardContent className="p-6 space-y-6">
               {/* Student and Activity Information */}
-              <div className="rounded-xl border bg-muted/30 p-4 space-y-3">
+              <div className="rounded-xl border border-border/50 bg-muted/30 backdrop-blur-xs p-4 space-y-3 dark:border-white/10 dark:bg-muted/20">
                 <div className="flex items-center gap-2.5">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-xs">
                     <User className="h-4 w-4" />
@@ -190,7 +194,7 @@ export default async function SupervisorReviewPage({ params }: PageProps) {
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                   Activity Summary &amp; Goals
                 </h3>
-                <div className="rounded-lg border bg-background/50 p-4 text-sm text-foreground/90 whitespace-pre-line leading-relaxed">
+                <div className="rounded-lg border border-border/50 bg-background/50 backdrop-blur-xs p-4 text-sm text-foreground/90 whitespace-pre-line leading-relaxed dark:border-white/10 dark:bg-background/40">
                   {experience.description}
                 </div>
               </div>
@@ -198,7 +202,7 @@ export default async function SupervisorReviewPage({ params }: PageProps) {
               {/* Verification Section */}
               {experience.status === "completed" ? (
                 /* Already Verified Banner */
-                <div className="rounded-xl border border-emerald-500/30 bg-emerald-50/60 dark:bg-emerald-950/20 p-6 text-center space-y-2">
+                <div className="rounded-xl border border-emerald-500/30 bg-emerald-50/60 dark:bg-emerald-950/20 backdrop-blur-xs p-6 text-center space-y-2">
                   <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-900/50 mb-2">
                     <CheckCircle2 className="h-7 w-7" />
                   </div>
@@ -212,7 +216,7 @@ export default async function SupervisorReviewPage({ params }: PageProps) {
               ) : (
                 /* Pending Sign-Off Action */
                 <div className="space-y-4 pt-2">
-                  <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 text-xs text-muted-foreground space-y-1">
+                  <div className="rounded-lg border border-primary/20 bg-primary/5 backdrop-blur-xs p-4 text-xs text-muted-foreground space-y-1">
                     <p className="font-semibold text-foreground">
                       Supervisor Declaration
                     </p>
@@ -228,7 +232,7 @@ export default async function SupervisorReviewPage({ params }: PageProps) {
               )}
             </CardContent>
 
-            <CardFooter className="border-t bg-muted/10 py-3 px-6 text-center justify-center text-xs text-muted-foreground">
+            <CardFooter className="border-t border-border/40 bg-muted/20 backdrop-blur-xs py-3 px-6 text-center justify-center text-xs text-muted-foreground">
               Washington School CAS Portal &bull; Candidate School in the Philippines
             </CardFooter>
           </Card>

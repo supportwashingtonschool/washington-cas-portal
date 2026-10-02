@@ -1,4 +1,5 @@
-﻿import LoginForm from "./login-form"
+import LoginForm from "./login-form"
+import { ThemeToggle } from "@/components/ThemeToggle"
 
 export const metadata = {
   title: "Login | Washington School CAS Portal",
@@ -13,7 +14,10 @@ export default async function LoginPage({
   const { error, message } = await searchParams
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-gradient-to-b from-background via-muted/30 to-background">
+    <main className="relative flex min-h-screen flex-col items-center justify-center p-4">
+      <div className="absolute top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
       <LoginForm error={error} message={message} />
     </main>
   )

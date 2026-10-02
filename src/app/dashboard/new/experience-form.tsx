@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useState } from "react"
 import Link from "next/link"
@@ -62,7 +62,7 @@ export default function ExperienceForm({ error }: ExperienceFormProps) {
         Back to Dashboard
       </Link>
 
-      <Card className="shadow-lg border-border bg-card">
+      <Card className="shadow-lg border-border/60 bg-card/75 backdrop-blur-md dark:bg-card/55 dark:border-white/10">
         <CardHeader>
           <CardTitle className="text-2xl font-bold">Propose CAS Experience</CardTitle>
           <CardDescription>
@@ -133,10 +133,10 @@ export default function ExperienceForm({ error }: ExperienceFormProps) {
                     <div
                       key={strand.id}
                       onClick={() => toggleStrand(strand.id)}
-                      className={`cursor-pointer rounded-lg border p-4 transition-all flex flex-col justify-between ${
+                      className={`cursor-pointer rounded-lg border p-4 transition-all flex flex-col justify-between backdrop-blur-xs ${
                         isChecked
                           ? `${strand.accentClass} ring-2 ring-primary`
-                          : "border-border hover:bg-muted/50"
+                          : "border-border/60 bg-muted/20 hover:bg-muted/40 dark:border-white/10 dark:bg-muted/15"
                       }`}
                     >
                       <div className="flex items-start justify-between">

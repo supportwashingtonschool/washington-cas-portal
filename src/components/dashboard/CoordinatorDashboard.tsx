@@ -31,7 +31,6 @@ import {
   Mail,
   UserCheck,
   GraduationCap,
-  Sparkles,
   Inbox,
   BookOpen,
 } from "lucide-react"
@@ -116,7 +115,7 @@ export default function CoordinatorDashboard({
   return (
     <div className="space-y-8">
       {/* Coordinator Welcome Banner */}
-      <Card className="border-purple-200 dark:border-purple-900/40 bg-gradient-to-r from-purple-500/10 via-purple-500/5 to-transparent">
+      <Card className="border-purple-200/60 dark:border-purple-900/40 bg-gradient-to-r from-purple-500/10 via-purple-500/5 to-transparent backdrop-blur-md shadow-xs">
         <CardHeader>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="space-y-1">
@@ -167,7 +166,7 @@ export default function CoordinatorDashboard({
         <TabsContent value="overview" className="space-y-6">
           {/* KPI Summary Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Card className="shadow-sm">
+            <Card className="shadow-xs border-border/60 bg-card/75 backdrop-blur-md dark:bg-card/55 dark:border-white/10">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">
                   Registered Students
@@ -184,7 +183,7 @@ export default function CoordinatorDashboard({
               </CardContent>
             </Card>
 
-            <Card className="shadow-sm">
+            <Card className="shadow-xs border-border/60 bg-card/75 backdrop-blur-md dark:bg-card/55 dark:border-white/10">
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium text-muted-foreground">
                   Pending Approvals
@@ -204,7 +203,7 @@ export default function CoordinatorDashboard({
 
           {/* Action callout banner */}
           {allPendingExperiences.length > 0 ? (
-            <Card className="border-amber-200 dark:border-amber-900/50 bg-amber-50/50 dark:bg-amber-950/20">
+            <Card className="border-amber-200/60 dark:border-amber-900/50 bg-amber-50/50 dark:bg-amber-950/20 backdrop-blur-md shadow-xs">
               <CardHeader>
                 <div className="flex items-center gap-2">
                   <Clock className="h-5 w-5 text-amber-600" />
@@ -218,7 +217,7 @@ export default function CoordinatorDashboard({
               </CardHeader>
             </Card>
           ) : (
-            <Card className="border-emerald-200 dark:border-emerald-900/50 bg-emerald-50/50 dark:bg-emerald-950/20">
+            <Card className="border-emerald-200/60 dark:border-emerald-900/50 bg-emerald-50/50 dark:bg-emerald-950/20 backdrop-blur-md shadow-xs">
               <CardHeader>
                 <div className="flex items-center gap-2">
                   <CheckCheck className="h-5 w-5 text-emerald-600" />
@@ -234,7 +233,7 @@ export default function CoordinatorDashboard({
           )}
 
           {/* IB CAS Program Guidelines */}
-          <Card>
+          <Card className="border-border/60 bg-card/75 backdrop-blur-md dark:bg-card/55 dark:border-white/10">
             <CardHeader>
               <CardTitle className="text-lg">Coordinator Program Guidelines</CardTitle>
               <CardDescription>
@@ -242,19 +241,19 @@ export default function CoordinatorDashboard({
               </CardDescription>
             </CardHeader>
             <CardContent className="grid sm:grid-cols-3 gap-4">
-              <div className="rounded-lg border border-amber-500/20 bg-amber-50/50 dark:bg-amber-950/10 p-4">
+              <div className="rounded-lg border border-amber-500/20 bg-amber-50/50 dark:bg-amber-950/20 backdrop-blur-xs p-4">
                 <h3 className="font-semibold text-amber-900 dark:text-amber-200 text-sm">Creativity Focus</h3>
                 <p className="text-xs text-muted-foreground mt-1">
                   Ensure arts and design experiences demonstrate individual initiative and personal creative growth.
                 </p>
               </div>
-              <div className="rounded-lg border border-emerald-500/20 bg-emerald-50/50 dark:bg-emerald-950/10 p-4">
+              <div className="rounded-lg border border-emerald-500/20 bg-emerald-50/50 dark:bg-emerald-950/20 backdrop-blur-xs p-4">
                 <h3 className="font-semibold text-emerald-900 dark:text-emerald-200 text-sm">Activity Focus</h3>
                 <p className="text-xs text-muted-foreground mt-1">
                   Check that physical activities contribute to a healthy routine with defined personal challenges.
                 </p>
               </div>
-              <div className="rounded-lg border border-blue-500/20 bg-blue-50/50 dark:bg-blue-950/10 p-4">
+              <div className="rounded-lg border border-blue-500/20 bg-blue-50/50 dark:bg-blue-950/20 backdrop-blur-xs p-4">
                 <h3 className="font-semibold text-blue-900 dark:text-blue-200 text-sm">Service Focus</h3>
                 <p className="text-xs text-muted-foreground mt-1">
                   Verify authentic community needs, voluntary engagement, and designated adult supervision.
@@ -298,9 +297,9 @@ export default function CoordinatorDashboard({
                 return (
                   <Card
                     key={exp.id}
-                    className="shadow-sm border-border bg-card transition-all hover:shadow-md"
+                    className="shadow-xs border-border/60 bg-card/75 backdrop-blur-md transition-all hover:shadow-md dark:bg-card/55 dark:border-white/10"
                   >
-                    <CardHeader className="pb-3 border-b bg-muted/10">
+                    <CardHeader className="pb-3 border-b border-border/40 bg-muted/20 backdrop-blur-xs">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                         <div className="flex items-center gap-2">
                           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-xs">
@@ -356,7 +355,7 @@ export default function CoordinatorDashboard({
 
                       {/* Supervisor details */}
                       {(exp.supervisor_name || exp.supervisor_email) && (
-                        <div className="rounded-lg border bg-muted/30 p-3 text-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                        <div className="rounded-lg border border-border/50 bg-muted/30 backdrop-blur-xs p-3 text-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 dark:border-white/10 dark:bg-muted/20">
                           <div className="flex items-center gap-2">
                             <UserCheck className="h-4 w-4 text-muted-foreground shrink-0" />
                             <span className="text-muted-foreground">
@@ -376,7 +375,7 @@ export default function CoordinatorDashboard({
                       )}
                     </CardContent>
 
-                    <CardFooter className="border-t bg-muted/10 py-3 px-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                    <CardFooter className="border-t border-border/40 bg-muted/20 backdrop-blur-xs py-3 px-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                       <p className="text-xs text-muted-foreground">
                         Action will immediately update the student&apos;s portfolio.
                       </p>
@@ -406,7 +405,7 @@ export default function CoordinatorDashboard({
             </span>
           </div>
 
-          <Card className="shadow-sm overflow-hidden">
+          <Card className="shadow-xs overflow-hidden border-border/60 bg-card/75 backdrop-blur-md dark:bg-card/55 dark:border-white/10">
             <Table>
               <TableHeader>
                 <TableRow>

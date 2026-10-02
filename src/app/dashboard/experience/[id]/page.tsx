@@ -1,14 +1,13 @@
-﻿import Link from "next/link"
+import Link from "next/link"
 import { notFound, redirect } from "next/navigation"
 import { createClient } from "@/utils/supabase/server"
 import { logout } from "@/app/login/actions"
 import { Button, buttonVariants } from "@/components/ui/button"
+import { ThemeToggle } from "@/components/ThemeToggle"
 import { Badge } from "@/components/ui/badge"
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -178,10 +177,10 @@ export default async function ExperienceDetailPage({ params }: PageProps) {
   return (
     <div className="min-h-screen bg-muted/30 pb-20">
       {/* Top Navbar */}
-      <header className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-30">
+      <header className="border-b border-border/60 bg-background/75 backdrop-blur-md sticky top-0 z-30 shadow-xs dark:bg-background/65 dark:border-white/10">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground font-semibold">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground font-semibold shadow-sm">
               <GraduationCap className="h-5 w-5" />
             </div>
             <div>
@@ -193,6 +192,8 @@ export default async function ExperienceDetailPage({ params }: PageProps) {
           </div>
 
           <div className="flex items-center gap-3">
+            <ThemeToggle />
+
             <Link
               href="/dashboard"
               className={cn(buttonVariants({ variant: "outline", size: "sm" }), "gap-1.5 text-xs")}
@@ -229,8 +230,8 @@ export default async function ExperienceDetailPage({ params }: PageProps) {
         </div>
 
         {/* Top Section: Experience Overview Card */}
-        <Card className="shadow-sm border-border bg-card">
-          <CardHeader className="space-y-4 pb-4 border-b">
+        <Card className="shadow-sm border-border/60 bg-card/75 backdrop-blur-md dark:bg-card/55 dark:border-white/10">
+          <CardHeader className="space-y-4 pb-4 border-b border-border/40">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
               <div className="space-y-1.5">
                 <CardTitle className="text-2xl sm:text-3xl font-bold tracking-tight">
@@ -262,8 +263,8 @@ export default async function ExperienceDetailPage({ params }: PageProps) {
             </div>
 
             {/* Supervisor & Metadata Details */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t">
-              <div className="rounded-lg border bg-muted/40 p-3 text-xs space-y-1.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-border/40">
+              <div className="rounded-lg border border-border/50 bg-muted/30 backdrop-blur-xs p-3 text-xs space-y-1.5 dark:border-white/10 dark:bg-muted/20">
                 <p className="font-semibold text-foreground flex items-center gap-1.5">
                   <UserCheck className="h-4 w-4 text-primary" />
                   Adult Supervisor
@@ -279,7 +280,7 @@ export default async function ExperienceDetailPage({ params }: PageProps) {
                 )}
               </div>
 
-              <div className="rounded-lg border bg-muted/40 p-3 text-xs space-y-1.5">
+              <div className="rounded-lg border border-border/50 bg-muted/30 backdrop-blur-xs p-3 text-xs space-y-1.5 dark:border-white/10 dark:bg-muted/20">
                 <p className="font-semibold text-foreground flex items-center gap-1.5">
                   <Calendar className="h-4 w-4 text-primary" />
                   Activity Timeline
@@ -343,9 +344,9 @@ export default async function ExperienceDetailPage({ params }: PageProps) {
               {reflections.map((refl, idx) => (
                 <Card
                   key={refl.id}
-                  className="shadow-sm border-border bg-card transition-all hover:shadow-md"
+                  className="shadow-sm border-border/60 bg-card/75 backdrop-blur-md transition-all hover:shadow-md dark:bg-card/55 dark:border-white/10"
                 >
-                  <CardHeader className="pb-2.5 border-b bg-muted/10">
+                  <CardHeader className="pb-2.5 border-b border-border/40 bg-muted/20 backdrop-blur-xs">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold">

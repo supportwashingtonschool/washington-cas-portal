@@ -1,5 +1,5 @@
-﻿import Link from "next/link"
-import { Button, buttonVariants } from "@/components/ui/button"
+import Link from "next/link"
+import { buttonVariants } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import {
   Card,
@@ -128,7 +128,7 @@ export default function StudentDashboard({
   return (
     <div className="space-y-8">
       {/* Welcome & Action Banner */}
-      <Card className="border-primary/20 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent">
+      <Card className="border-primary/20 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent backdrop-blur-md shadow-xs">
         <CardHeader>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="space-y-1">
@@ -150,7 +150,7 @@ export default function StudentDashboard({
             <div>
               <Link
                 href="/dashboard/new"
-                className={cn(buttonVariants(), "gap-2 shadow-sm font-semibold")}
+                className={cn(buttonVariants(), "gap-2 shadow-xs font-semibold")}
               >
                 <Plus className="h-4 w-4" />
                 Propose New Experience
@@ -160,15 +160,15 @@ export default function StudentDashboard({
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-            <div className="rounded-lg border bg-background/60 p-4">
+            <div className="rounded-lg border border-border/50 bg-background/50 backdrop-blur-sm p-4 shadow-2xs dark:border-white/10 dark:bg-background/40">
               <p className="text-xs font-medium text-muted-foreground">Student ID</p>
               <p className="text-xs font-mono truncate mt-1 text-foreground">{profile.id}</p>
             </div>
-            <div className="rounded-lg border bg-background/60 p-4">
+            <div className="rounded-lg border border-border/50 bg-background/50 backdrop-blur-sm p-4 shadow-2xs dark:border-white/10 dark:bg-background/40">
               <p className="text-xs font-medium text-muted-foreground">Email</p>
               <p className="text-xs font-medium truncate mt-1 text-foreground">{userEmail || "Student Account"}</p>
             </div>
-            <div className="rounded-lg border bg-background/60 p-4">
+            <div className="rounded-lg border border-border/50 bg-background/50 backdrop-blur-sm p-4 shadow-2xs dark:border-white/10 dark:bg-background/40">
               <p className="text-xs font-medium text-muted-foreground">Portal Status</p>
               <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mt-1 flex items-center gap-1">
                 <Sparkles className="h-3.5 w-3.5" />
@@ -223,13 +223,13 @@ export default function StudentDashboard({
             {experiences.map((exp) => (
               <Card
                 key={exp.id}
-                className="flex flex-col justify-between shadow-sm hover:shadow-md hover:border-primary/40 transition-all border-border bg-card group"
+                className="flex flex-col justify-between shadow-xs hover:shadow-md hover:border-primary/40 transition-all border-border/60 bg-card/75 backdrop-blur-md dark:bg-card/55 dark:border-white/10 group"
               >
-                <CardHeader className="pb-3">
+                <CardHeader className="pb-3 border-b border-border/40">
                   <div className="flex items-start justify-between gap-2">
                     <Link
                       href={`/dashboard/experience/${exp.id}`}
-                      className="text-lg font-bold leading-snug line-clamp-2 hover:text-primary transition-colors"
+                      className="text-lg font-bold leading-snug line-clamp-2 hover:text-primary transition-colors text-foreground"
                     >
                       {exp.title}
                     </Link>
@@ -246,14 +246,14 @@ export default function StudentDashboard({
                   </div>
                 </CardHeader>
 
-                <CardContent className="space-y-3 pb-4">
+                <CardContent className="space-y-3 pb-4 pt-3">
                   <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">
                     {exp.description}
                   </p>
 
                   {/* Supervisor Information */}
                   {(exp.supervisor_name || exp.supervisor_email) && (
-                    <div className="rounded-md border bg-muted/40 p-2.5 text-xs space-y-1">
+                    <div className="rounded-md border border-border/50 bg-muted/30 backdrop-blur-xs p-2.5 text-xs space-y-1 dark:border-white/10 dark:bg-muted/20">
                       {exp.supervisor_name && (
                         <div className="flex items-center gap-1.5 font-medium text-foreground">
                           <UserCheck className="h-3.5 w-3.5 text-muted-foreground" />
@@ -270,7 +270,7 @@ export default function StudentDashboard({
                   )}
                 </CardContent>
 
-                <CardFooter className="border-t bg-muted/20 py-2.5 px-4 text-xs text-muted-foreground flex items-center justify-between">
+                <CardFooter className="border-t border-border/40 bg-muted/20 backdrop-blur-xs py-2.5 px-4 text-xs text-muted-foreground flex items-center justify-between">
                   <span>
                     Submitted: {new Date(exp.created_at).toLocaleDateString("en-US", {
                       month: "short",

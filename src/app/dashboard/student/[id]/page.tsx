@@ -1,13 +1,13 @@
-﻿import Link from "next/link"
+import Link from "next/link"
 import { notFound, redirect } from "next/navigation"
 import { createClient } from "@/utils/supabase/server"
 import { logout } from "@/app/login/actions"
 import { Button, buttonVariants } from "@/components/ui/button"
+import { ThemeToggle } from "@/components/ThemeToggle"
 import { Badge } from "@/components/ui/badge"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -192,7 +192,7 @@ export default async function StudentPortfolioAuditPage({ params }: PageProps) {
   return (
     <div className="min-h-screen bg-muted/30 pb-20">
       {/* Top Navbar */}
-      <header className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-30">
+      <header className="border-b border-border/60 bg-background/75 backdrop-blur-md sticky top-0 z-30 shadow-xs dark:bg-background/65 dark:border-white/10">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6">
           <div className="flex items-center gap-2.5">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-purple-600 text-white font-semibold shadow-sm">
@@ -209,6 +209,8 @@ export default async function StudentPortfolioAuditPage({ params }: PageProps) {
           </div>
 
           <div className="flex items-center gap-3">
+            <ThemeToggle />
+
             <Link
               href="/dashboard"
               className={cn(
@@ -253,7 +255,7 @@ export default async function StudentPortfolioAuditPage({ params }: PageProps) {
         </div>
 
         {/* Student Audit Header Card */}
-        <Card className="border-purple-200 dark:border-purple-900/40 bg-gradient-to-r from-purple-500/10 via-purple-500/5 to-transparent">
+        <Card className="border-purple-200/60 dark:border-purple-900/40 bg-gradient-to-r from-purple-500/10 via-purple-500/5 to-transparent backdrop-blur-md shadow-xs">
           <CardHeader>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div className="space-y-1.5">
@@ -273,7 +275,7 @@ export default async function StudentPortfolioAuditPage({ params }: PageProps) {
               </div>
 
               <div>
-                <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300 border border-purple-300/40 shadow-sm">
+                <span className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold bg-purple-100 text-purple-800 dark:bg-purple-900/40 dark:text-purple-300 border border-purple-300/40 shadow-xs">
                   <ShieldCheck className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
                   CAS Portfolio Audit View
                 </span>
@@ -284,28 +286,28 @@ export default async function StudentPortfolioAuditPage({ params }: PageProps) {
           <CardContent>
             {/* Quick Metrics Bar */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-              <div className="rounded-lg border bg-background/60 p-3">
+              <div className="rounded-lg border border-border/50 bg-background/50 backdrop-blur-sm p-3 shadow-2xs dark:border-white/10 dark:bg-background/40">
                 <p className="text-xs text-muted-foreground">Total Experiences</p>
                 <p className="text-xl font-bold mt-0.5 text-foreground">
                   {experiences.length}
                 </p>
               </div>
 
-              <div className="rounded-lg border bg-background/60 p-3">
+              <div className="rounded-lg border border-border/50 bg-background/50 backdrop-blur-sm p-3 shadow-2xs dark:border-white/10 dark:bg-background/40">
                 <p className="text-xs text-muted-foreground">Approved</p>
                 <p className="text-xl font-bold mt-0.5 text-emerald-600 dark:text-emerald-400">
                   {approvedCount}
                 </p>
               </div>
 
-              <div className="rounded-lg border bg-background/60 p-3">
+              <div className="rounded-lg border border-border/50 bg-background/50 backdrop-blur-sm p-3 shadow-2xs dark:border-white/10 dark:bg-background/40">
                 <p className="text-xs text-muted-foreground">Completed</p>
                 <p className="text-xl font-bold mt-0.5 text-purple-600 dark:text-purple-400">
                   {completedCount}
                 </p>
               </div>
 
-              <div className="rounded-lg border bg-background/60 p-3">
+              <div className="rounded-lg border border-border/50 bg-background/50 backdrop-blur-sm p-3 shadow-2xs dark:border-white/10 dark:bg-background/40">
                 <p className="text-xs text-muted-foreground">Reflections Logged</p>
                 <p className="text-xl font-bold mt-0.5 text-blue-600 dark:text-blue-400">
                   {totalReflections}
@@ -356,10 +358,10 @@ export default async function StudentPortfolioAuditPage({ params }: PageProps) {
                 return (
                   <Card
                     key={exp.id}
-                    className="shadow-sm border-border bg-card overflow-hidden"
+                    className="shadow-sm border-border/60 bg-card/75 backdrop-blur-md overflow-hidden dark:bg-card/55 dark:border-white/10"
                   >
                     {/* Experience Header */}
-                    <CardHeader className="pb-3 border-b bg-muted/15">
+                    <CardHeader className="pb-3 border-b border-border/40 bg-muted/20 backdrop-blur-xs">
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                         <div className="space-y-1.5">
                           <CardTitle className="text-xl font-bold leading-snug">
@@ -394,7 +396,7 @@ export default async function StudentPortfolioAuditPage({ params }: PageProps) {
 
                       {/* Supervisor and Activity Metadata */}
                       {(exp.supervisor_name || exp.supervisor_email) && (
-                        <div className="rounded-lg border bg-muted/30 p-3 text-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                        <div className="rounded-lg border border-border/50 bg-muted/30 backdrop-blur-xs p-3 text-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 dark:border-white/10 dark:bg-muted/20">
                           <div className="flex items-center gap-2">
                             <UserCheck className="h-4 w-4 text-muted-foreground shrink-0" />
                             <span className="text-muted-foreground">
@@ -431,7 +433,7 @@ export default async function StudentPortfolioAuditPage({ params }: PageProps) {
                             {sortedReflections.map((refl, idx) => (
                               <div
                                 key={refl.id}
-                                className="rounded-lg border bg-background/80 p-3.5 text-xs space-y-2 shadow-2xs"
+                                className="rounded-lg border border-border/50 bg-background/60 backdrop-blur-sm p-3.5 text-xs space-y-2 shadow-2xs dark:bg-background/40 dark:border-white/10"
                               >
                                 <div className="flex items-center justify-between text-muted-foreground">
                                   <span className="font-semibold text-primary">
@@ -463,7 +465,7 @@ export default async function StudentPortfolioAuditPage({ params }: PageProps) {
                       </div>
                     </CardContent>
 
-                    <CardFooter className="border-t bg-muted/10 py-2.5 px-6 text-xs text-muted-foreground flex items-center justify-between">
+                    <CardFooter className="border-t border-border/40 bg-muted/20 backdrop-blur-xs py-2.5 px-6 text-xs text-muted-foreground flex items-center justify-between">
                       <span>
                         Proposed on:{" "}
                         {new Date(exp.created_at).toLocaleDateString("en-US", {

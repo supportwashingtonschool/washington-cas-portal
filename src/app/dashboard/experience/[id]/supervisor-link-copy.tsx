@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useState } from "react"
 import { Input } from "@/components/ui/input"
@@ -29,7 +29,7 @@ export default function SupervisorLinkCopy({ token }: SupervisorLinkCopyProps) {
   }
 
   return (
-    <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 space-y-2.5">
+    <div className="rounded-xl border border-primary/20 bg-primary/5 p-4 space-y-2.5 backdrop-blur-xs">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-1.5 font-semibold text-xs text-foreground">
           <LinkIcon className="h-3.5 w-3.5 text-primary" />
@@ -44,7 +44,7 @@ export default function SupervisorLinkCopy({ token }: SupervisorLinkCopyProps) {
         <Input
           readOnly
           value={magicLink}
-          className="text-xs font-mono bg-background select-all h-8"
+          className="text-xs font-mono bg-background/60 backdrop-blur-xs select-all h-8 border-border/60"
         />
         <Button
           type="button"

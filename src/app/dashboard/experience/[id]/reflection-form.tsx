@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useRef, useState } from "react"
 import { addReflection } from "./actions"
@@ -15,7 +15,6 @@ interface ReflectionFormProps {
 
 export default function ReflectionForm({
   experienceId,
-  experienceStatus,
 }: ReflectionFormProps) {
   const formRef = useRef<HTMLFormElement>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -39,8 +38,8 @@ export default function ReflectionForm({
   }
 
   return (
-    <Card className="shadow-sm border-border bg-card">
-      <CardHeader className="pb-3">
+    <Card className="shadow-xs border-border/60 bg-card/75 backdrop-blur-md dark:bg-card/55 dark:border-white/10">
+      <CardHeader className="pb-3 border-b border-border/40 bg-muted/20 backdrop-blur-xs">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-primary">

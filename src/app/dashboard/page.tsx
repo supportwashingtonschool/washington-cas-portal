@@ -1,10 +1,11 @@
-﻿import { redirect } from "next/navigation"
+import { redirect } from "next/navigation"
 import { createClient } from "@/utils/supabase/server"
 import { logout } from "@/app/login/actions"
 import { Button } from "@/components/ui/button"
 import { GraduationCap, LogOut } from "lucide-react"
 import StudentDashboard, { Profile } from "@/components/dashboard/StudentDashboard"
 import CoordinatorDashboard from "@/components/dashboard/CoordinatorDashboard"
+import { ThemeToggle } from "@/components/ThemeToggle"
 
 export const metadata = {
   title: "Dashboard | Washington School CAS Portal",
@@ -58,7 +59,7 @@ export default async function DashboardPage() {
     return (
       <div className="min-h-screen bg-muted/30 pb-16">
         {/* Top Navbar */}
-        <header className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-30">
+        <header className="border-b border-border/60 bg-background/75 backdrop-blur-md sticky top-0 z-30 shadow-xs dark:bg-background/65 dark:border-white/10">
           <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6">
             <div className="flex items-center gap-2.5">
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-purple-600 text-white font-semibold shadow-sm">
@@ -81,6 +82,8 @@ export default async function DashboardPage() {
                   {profile.role}
                 </span>
               </div>
+
+              <ThemeToggle />
 
               <form action={logout}>
                 <Button
@@ -118,7 +121,7 @@ export default async function DashboardPage() {
   return (
     <div className="min-h-screen bg-muted/30 pb-16">
       {/* Top Navbar */}
-      <header className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-30">
+      <header className="border-b border-border/60 bg-background/75 backdrop-blur-md sticky top-0 z-30 shadow-xs dark:bg-background/65 dark:border-white/10">
         <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6">
           <div className="flex items-center gap-2.5">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground font-semibold shadow-sm">
@@ -141,6 +144,8 @@ export default async function DashboardPage() {
                 {profile.role}
               </span>
             </div>
+
+            <ThemeToggle />
 
             <form action={logout}>
               <Button
